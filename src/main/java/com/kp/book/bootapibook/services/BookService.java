@@ -23,4 +23,10 @@ public class BookService {
     public Book getBookById(int id){
         return books.stream().filter(e-> e.getId()==id).findFirst().orElse(null);
     }
+
+    // add a new book
+    public Book addBook(Book b){
+        books.add(b);
+        return b;
+    }
 }
