@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.kp.book.bootapibook.model.Book;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -28,5 +29,16 @@ public class BookService {
     public Book addBook(Book b){
         books.add(b);
         return b;
+    }
+
+    // delete a book
+    public void deleteBook(int id){
+        // for(var it : books){
+        //     if(it.getId()==id){
+        //         books.remove(it);
+        //     }
+        // }
+        books = books.stream().filter(book->book.getId()!=id).collect(Collectors.toList());
+        // return books;
     }
 }

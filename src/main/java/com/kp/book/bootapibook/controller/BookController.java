@@ -1,6 +1,7 @@
 package com.kp.book.bootapibook.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,13 @@ public class BookController {
         Book book = bookService.addBook(b);
         System.out.println(book);
         return book;
+    }
+
+    // deleting a book
+    @DeleteMapping("/books/{id}")
+    public String deleteBook(@PathVariable("id") int id){
+        bookService.deleteBook(id);
+        return "Book with id "+id+ " deleted succesfully!!";
     }
 
 }
